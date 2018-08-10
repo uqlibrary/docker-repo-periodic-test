@@ -1,0 +1,6 @@
+GITHUB_REPO_NAME="myProject"
+GITHUB_ORG_NAME="acme"
+REPO_BRANCH_NAME="canarybranch" # branch name in repo to run tests in - does not need to pre-exist. Required.
+
+# Run task weekly
+0 6 * * 0 root chmod +x /scripts/repo-periodic-test ; /scripts/repo-periodic-test -e GITHUB_ORG_NAME="${GITHUB_ORG_NAME}" -e GITHUB_REPO_NAME="${GITHUB_REPO_NAME}" -e REPO_BRANCH_NAME="${REPO_BRANCH_NAME}"

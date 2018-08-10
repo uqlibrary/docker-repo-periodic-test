@@ -1,0 +1,8 @@
+version: '3'
+services:
+  fpm:
+    build: .
+    env_file:
+        - .env
+    volumes:
+      - ../:/var/app/current
