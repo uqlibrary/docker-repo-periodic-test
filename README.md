@@ -19,6 +19,8 @@ This script can be used to have early notice that a future browser version break
 
 The separate branch allows master branch to be inviolate.
 
+To push a change to this repo to live, make a release with an integer tag (use the next number). This will cause dockerhub to pick up the release and then you can update the release number on ECS (ECS change done manually atm).
+
 ### Requirements
 
 2. Needs to have these details seeded via ENV vars:
