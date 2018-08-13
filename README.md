@@ -4,12 +4,14 @@ Docker container that clones a named repo, copies master to a named branch and p
 
 This script is useful to force codeship to periodically rerun a suite of tests.
 
-Method:
+To use this to run tests on a repo:
 
-* Configure github to push all commits to codeship.
-* Define a github user who has write privilege on the target repo
-* Choose a branch name on github that is 'special'
+* Configure the github repo to push all commits to codeship and note GITHUB_ORG_NAME and GITHUB_REPO_NAME
+* Define a github user who has write privilege on the target repo and note GITHUB_USER_EMAIL, GITHUB_USER_NAME, GITHUB_USER_TOKEN
+* Choose a branch name on github that is 'special' and note REPO_BRANCH_NAME
 * Configure codeship to run the desired tests when the 'special' branch name is pushed
+* Add/edit a Scheduled Task on ECS (ECS > Clusters > default > create) and set the environment variables
+* Add a Schedule Target for the new repo to the Scheduled Task (and set an environment override for GITHUB_REPO_NAME if you want to test multiple repos)
 
 This script can be used to have early notice that a future browser version breaks a frontend, by forcing the repo to run frontend tests on a given branch on codeship (hint: saucelabs)
 
@@ -47,7 +49,8 @@ The separate branch allows master branch to be inviolate.
 
 Get your org's webhooks: https://slack.com/apps/A0F7XDUAZ-incoming-webhooks
 
-More reading:
-# https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack
-# https://api.slack.com/incoming-webhooks
+### More reading:
+
+* https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack
+* https://api.slack.com/incoming-webhooks
 
