@@ -84,7 +84,7 @@ failure () {
         slackMessage="FATAL ERROR: ${jobName} - ${errorMessage}!"
         slackColour="#FF0000"
         echo "Posting Slack Notification to WebHook: $SLACK_WEBHOOK";
-        slackPayload="slackPayload={\"channel\": \"${SLACK_CHANNEL}\", \"username\": \"${SLACK_BOTNAME}\", \"attachments\":[{\"fallback\":\"${slackPreText} ${slackMessage}\", \"pretext\":\":fire::fire:*${slackPreText} ${slackMessage}*:fire::fire:\", \"color\":\"${slackColour}\", \"mrkdwn_in\":[\"text\", \"pretext\"], \"fields\":[{\"title\":\"Error Mesage\", \"value\":\"${errorMessage}\", \"short\":false}]}] }"
+        slackPayload="payload={\"channel\": \"${SLACK_CHANNEL}\", \"username\": \"${SLACK_BOTNAME}\", \"attachments\":[{\"fallback\":\"${slackPreText} ${slackMessage}\", \"pretext\":\":fire::fire:*${slackPreText} ${slackMessage}*:fire::fire:\", \"color\":\"${slackColour}\", \"mrkdwn_in\":[\"text\", \"pretext\"], \"fields\":[{\"title\":\"Error Mesage\", \"value\":\"${errorMessage}\", \"short\":false}]}] }"
         CURL_RESULT=`curl -s -S -X POST --data-urlencode "$slackPayload" $SLACK_WEBHOOK`
     fi
     exit 1
